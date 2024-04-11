@@ -1,0 +1,86 @@
+<header>
+  <nav>
+    <ul id="lista">
+      <li><a
+          href="/products?limit=10&page=1"
+          id="back-to-products"
+        >back to products</i></a></li>
+    </ul>
+  </nav>
+</header>
+
+<form id="product-form">
+  <h2>{{Head}}</h2><br />
+  <div>
+    <label for="code-input">Code</label>
+    <input
+      type="text"
+      id="code-input"
+      name="code"
+      required
+    />
+    
+    <button>Search</button>
+
+
+  </div>
+  <div>
+    <label for="title-input">Title</label>
+    <input
+      type="text"
+      id="title-input"
+      name="title"
+      required
+    />
+  </div>
+  <div>
+    <label for="description-input">Description</label>
+    <input
+      type="text"
+      id="description-input"
+      name="description"
+      required
+    />
+  </div>
+  <div>
+    <label for="category-select">Category</label>
+    <select id="category-select" name="category" required>
+      <option value="category 1">category 1</option>
+      <option value="category 2">category 2</option>
+      <option value="+category 3">category 3</option>
+    </select>
+  </div>
+  <div>
+    <label for="stock-input">Stock</label>
+    <input
+      type="number"
+      id="stock-input"
+      name="stock"
+      required
+    />
+  </div>
+  <div>
+    <label for="price-input">Price</label>
+    <input
+      type="number"
+      id="price-input"
+      name="price"
+      required
+    />
+  </div>
+  {{!-- <div>
+    <label for="thumbnail-input">Thumbnail URL</label><hr />
+    <input
+      type="text"
+      id="thumbnail-input"
+      name="thumbnailUrl"
+      required
+    />
+  </div> --}}
+
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+
+<script src="/public/js/newProduct.js" type="application/javascript"></script>

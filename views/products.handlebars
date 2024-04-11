@@ -1,0 +1,60 @@
+<header>
+  {{#if user}}
+  <h3>Welcome {{user.name}}! [role: {{user.role}}] [cart: {{user.cart}}]</h3>
+  {{/if}}
+  <nav>
+    <ul id="lista">
+      <li><a href="/newproducts" id="addref">create new product</a></li>
+      <li><a href="/carts/{{this.cart}}" id="cartref">My cart</a></li>
+      <li><a href="#" id="logout">Logout</i></a></li>
+    </ul>
+  </nav>
+</header>
+
+<h1>Product List</h1>
+
+{{#if listExist}}
+<div>
+  {{#each list.payload}}
+  <div>
+    <h2>{{this.title}}</h2>
+    <p>id: {{this.id}}</p>
+    <p>Categoría: {{this.category}}</p>
+    <p>Item:{{this.code}}</p>
+    <p>Descripción: {{this.description}}</p>
+    <p>Precio: {{this.price}}</p>
+    <p>Stock: {{this.stock}}</p>
+    <p>See detail product: <a href="http://localhost:8080/api/products/{{this.id}}">see detail</a></p>
+    <input type="number" min="1" max="{{this.stock}}" value="1" id="quantity-{{this.code}}">
+    <button type="button"
+      onclick="addProductQuantityToCart(document.getElementById('cartref').href,this.dataset.productid,document.getElementById('quantity-{{this.code}}').value)"
+      data-productid={{this.id}} /> add to cart
+    </button>
+  </div>
+  {{/each}}
+</div>
+{{else}}
+<p>the product gallery is empty</p>
+{{/if}}
+
+<nav aria-label="Page navigation">
+  <ul>
+    {{#if list.hasPrevPage}}
+    <li>
+      {{else}}
+    <li>
+      {{/if}}
+      <a href={{list.prevLink}}>Prev Page</a>
+    </li>
+    {{#if list.hasNextPage}}
+    <li>
+      {{else}}
+    <li>
+      {{/if}}
+      <a href={{list.nextLink}}>Next Page</a>
+    </li>
+  </ul>
+</nav>
+
+<script src="/public/js/product.js"></script>
+<script src="/public/js/logout.js"></script>

@@ -1,0 +1,35 @@
+<header>
+  <nav>
+    <ul id="lista">
+      <li><a href="/products?limit=10&page=1" id="back-to-products">Back to products</i></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h2 id="cart-heading">{{Head}}</h2>
+
+  {{#if listExist}}
+    <h4 id="ordertitle">My Order</h4>
+    <section id="cart-items">
+      {{#each list}}
+        <div id="cart-item-{{this.product.code}}">
+          <h3>{{this.product.title}}</h3>
+          <p>{{this.product.description}}</p>
+          <ul>
+            <li>Code: {{this.product.code}}</li>
+            <li>Description: {{this.product.description}}</li>
+            <li>Price: ${{this.product.price}}</li>
+            <li>Quantity: {{this.quantity}}</li>
+          </ul>
+          <button type="button" onclick="delProductInCartShop(document.getElementById('cartref').href, this.dataset.productid)">Remove Item</button>
+        </div>
+      {{/each}}
+    </section>
+    <button id="pay-button">Pay My Order</button>
+  {{else}}
+    <p>No Products yet</p>
+  {{/if}}
+</main>
+
+<script src="/public/js/removeprod.js"></script>
